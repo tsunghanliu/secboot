@@ -661,8 +661,8 @@ func addKeyToLUKS2Container(devicePath string, existingKey, key []byte, extraOpt
 // key argument.
 //
 // The recovery key is provided via the recoveryKey argument and must be a cryptographically secure 16-byte number.
-func AddRecoveryKeyToLUKS2Container(devicePath string, key []byte, recoveryKey RecoveryKey) error {
-	return addKeyToLUKS2Container(devicePath, key, recoveryKey[:], []string{
+func AddRecoveryKeyToLUKS2Container(devicePath string, key []byte, recoveryKey []byte) error {
+	return addKeyToLUKS2Container(devicePath, key, recoveryKey, []string{
 		// use argon2i as the KDF with an increased cost
 		"--pbkdf", "argon2i", "--iter-time", "5000"})
 }
